@@ -62,7 +62,13 @@ class ResourceMonitor extends Component
                 if ($httpStatusCode !== self::CORRECT_HTTP_STATUS_CODE) {
                     if (!is_null($request)) {
                         $deltaTime = time() - $request->timestmp;
-                        if (in_array($deltaTime, self::DURATION_RESOURCE_UNAVAILABLE)) {
+
+                        $filteredDurations = array_filter(self::DURATION_RESOURCE_UNAVAILABLE, function($duration) use ($deltaTime) {
+                            if ($deltaTime > ($duration * 60) && $deltaTime < ($duration * 60 + 59))
+                            return true;
+                        });
+
+                        if (!empty($filteredDurations)) {
                             $event = new ResourceEvent;
                             $event->uri = $uri;
                             $this->trigger(self::EVENT_RESOURCE_UNAVAILABLE, $event);
