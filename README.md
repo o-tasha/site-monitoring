@@ -1,17 +1,21 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
-    <br>
+    <h1 align="center">Мониторинг сайтов</h1>
+    Приложение является консольным
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+ОСНОВНЫЕ НАСТРОЙКИ ПРИЛОЖЕНИЯ
+-----------------------------
+Основные настройки доступны в файле /config/console.php. Компонент resourceMonitor предназначен для проверки ресурсов, заданных через его атрибут resources,
+и в случае срабатывания событий уведомит о них посредством компонента notifier. Компонент notifier может быть сконфигурирован на отправку e-mail или sms 
+сообщений. Для запроса ресурса компонент resourceMonitor использует HTTP-клиент, реализованный на базе библиотеки cURL.
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+
+### Запуск программы по расписанию
+Запуск нужно настроить с периодичностью раз в минуту:
+<p>
+*/1 * * * * php /путь/к/yii monitor/index > /путь/к/runtime/logs/monitor-index.log
+</p>
+
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)

@@ -30,7 +30,7 @@ $config = [
         },
         'resourceMonitor' => [
             'class' => 'app\components\ResourceMonitor',
-            'resources' => ['http://foodapp.adresat.ru', 'http://foodapp.adresat.ru/api/v2'],
+            'resources' => ['http://yandex.ru', 'http://yandex.ru/test'],
             'on ResourceUnavailable' => function ($event) {
                 \Yii::$app->notifier->notify('from@from.ru', 'to@to.ru', ['subject' => 'Ресурс недоступен', 'text' => $event->uri]);
             },
